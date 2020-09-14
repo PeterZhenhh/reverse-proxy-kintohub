@@ -1,0 +1,10 @@
+:3000 {
+    reverse_proxy / https://ishare.melulu.workers.dev {
+        header_up Host {http.reverse_proxy.upstream.hostport}
+        header_up -Origin
+        header_up X-Real-IP {http.request.remote}
+        header_up X-Forwarded-For {http.request.remote}
+        header_up X-Forwarded-Port {http.request.port}
+        header_up X-Forwarded-Proto {http.request.scheme}
+    }
+}
